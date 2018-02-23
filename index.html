@@ -100,7 +100,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/23/github提交图片文件的几个基本命令/" data-id="cjdznym0j0000lowgrdgz8vya" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/02/23/github提交图片文件的几个基本命令/" data-id="cjdzoe1wu0000l0wgi45dsub4" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -132,7 +132,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参考：<br><a href="http://www.jowanxu.top/2017/09/02/%E9%80%9A%E8%BF%87GitHub%E5%92%8CHexo%E6%9D%A5%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#more" target="_blank" rel="noopener"> 通过GitHub和Hexo来搭建自己的个人博客</a><br><a href="http://blog.csdn.net/wx_962464/article/details/44786929" target="_blank" rel="noopener">Hexo 使用中遇到的问题总结</a><br><a href="https://www.jianshu.com/p/0b1fccce74e0" target="_blank" rel="noopener">利用Hexo在多台电脑上提交和更新github pages博客</a><br><a href="http://blog.csdn.net/xiaoyu19910321/article/details/79134679" target="_blank" rel="noopener">github+hexo搭建自己的博客【真正的从0到1】20180122为准</a><br><a href="http://www.icafebolger.com/tags/hexo" target="_blank" rel="noopener">Hexo搭建教程</a><br>资源：<br><a href="https://npm.taobao.org/" target="_blank" rel="noopener">淘宝 NPM 镜像</a></p>
+        <p>参考：<br><a href="http://www.jowanxu.top/2017/09/02/%E9%80%9A%E8%BF%87GitHub%E5%92%8CHexo%E6%9D%A5%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#more" target="_blank" rel="noopener"> 通过GitHub和Hexo来搭建自己的个人博客</a><br><a href="http://blog.csdn.net/wx_962464/article/details/44786929" target="_blank" rel="noopener">Hexo 使用中遇到的问题总结</a><br><a href="https://www.jianshu.com/p/0b1fccce74e0" target="_blank" rel="noopener">利用Hexo在多台电脑上提交和更新github pages博客</a><br><a href="http://blog.csdn.net/xiaoyu19910321/article/details/79134679" target="_blank" rel="noopener">github+hexo搭建自己的博客【真正的从0到1】20180122为准</a><br><a href="http://www.icafebolger.com/tags/hexo" target="_blank" rel="noopener">Hexo搭建教程</a><br><a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="noopener">Hexo搭建Github静态博客</a><br>资源：<br><a href="https://npm.taobao.org/" target="_blank" rel="noopener">淘宝 NPM 镜像</a></p>
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="1-部署的时候执行：hexo-deploy-命令行没有任何输出，也没有错误"><a href="#1-部署的时候执行：hexo-deploy-命令行没有任何输出，也没有错误" class="headerlink" title="1.部署的时候执行：hexo deploy 命令行没有任何输出，也没有错误"></a>1.部署的时候执行：hexo deploy 命令行没有任何输出，也没有错误</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">解决办法： </span><br><span class="line">在部署的_config.yml文件中，找到deploy:标签，在每个冒号后面必须要空格，否则就会出现上述问题。我的配置如下：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line"><span class="built_in">type</span>: git</span><br><span class="line">repository: https://github.com/wx962464/wx962464.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
 <h3 id="2-部署提示找不到git"><a href="#2-部署提示找不到git" class="headerlink" title="2.部署提示找不到git"></a>2.部署提示找不到git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解决办法： </span><br><span class="line">在Hexo 3.0版本后deploy git 被分开的，所以需要安装，安装命令如下:npm install hexo-deployer-git --save ,安装好后在尝试一下就ok。</span><br></pre></td></tr></table></figure>
 <h3 id="3-执行-npm-install-g-hexo-cli-一直在等待，没有反应"><a href="#3-执行-npm-install-g-hexo-cli-一直在等待，没有反应" class="headerlink" title="3. 执行 npm install -g hexo-cli 一直在等待，没有反应"></a>3. 执行 npm install -g hexo-cli 一直在等待，没有反应</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ 是npm官方镜像连不通的问题. 尝试用淘宝的npm镜像后可以。执行 npm config <span class="built_in">set</span> registry <span class="string">"https://registry.npm.taobao.org"</span> 将npm包源指向淘宝。</span><br><span class="line"></span><br><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
@@ -146,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/22/通过GitHub和Hexo来搭建自己的个人博客/" data-id="cjdznym0n0001lowgdk43gpdv" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/02/22/通过GitHub和Hexo来搭建自己的个人博客/" data-id="cjdzoe1xm0001l0wgqejexg5q" class="article-share-link">Teilen</a>
       
       
     </footer>
