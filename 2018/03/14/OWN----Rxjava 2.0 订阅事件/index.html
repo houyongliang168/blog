@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Rxjava 2.0 订阅事件 | Houyongliang Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Rxjava 2.0 订阅事件  参考：Android RxJava：面向初学者的RxJava使用指南 https://www.jianshu.com/p/6a89413f2ab1  版本：  compile ‘io.reactivex.rxjava2:rxjava:2.0.1’compile ‘io.reactivex.rxjava2:rxandroid:2.0.1’  1.Observer的s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rxjava 2.0 订阅事件">
+<meta property="og:url" content="http://yoursite.com/2018/03/14/OWN----Rxjava 2.0 订阅事件/index.html">
+<meta property="og:site_name" content="Houyongliang Blog">
+<meta property="og:description" content="Rxjava 2.0 订阅事件  参考：Android RxJava：面向初学者的RxJava使用指南 https://www.jianshu.com/p/6a89413f2ab1  版本：  compile ‘io.reactivex.rxjava2:rxjava:2.0.1’compile ‘io.reactivex.rxjava2:rxandroid:2.0.1’  1.Observer的s">
+<meta property="og:updated_time" content="2018-03-14T08:52:38.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rxjava 2.0 订阅事件">
+<meta name="twitter:description" content="Rxjava 2.0 订阅事件  参考：Android RxJava：面向初学者的RxJava使用指南 https://www.jianshu.com/p/6a89413f2ab1  版本：  compile ‘io.reactivex.rxjava2:rxjava:2.0.1’compile ‘io.reactivex.rxjava2:rxandroid:2.0.1’  1.Observer的s">
+  
+    <link rel="alternate" href="/atom.xml" title="Houyongliang Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Houyongliang Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-OWN----Rxjava 2.0 订阅事件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/14/OWN----Rxjava 2.0 订阅事件/" class="article-date">
+  <time datetime="2018-03-14T08:52:59.683Z" itemprop="datePublished">2018-03-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Rxjava 2.0 订阅事件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>Rxjava 2.0 订阅事件</em></strong></p>
+<blockquote>
+<p>参考：Android RxJava：面向初学者的RxJava使用指南 <a href="http://note.youdao.com/" target="_blank" rel="noopener">https://www.jianshu.com/p/6a89413f2ab1</a></p>
+</blockquote>
+<p>版本：</p>
+<blockquote>
+<p>compile ‘io.reactivex.rxjava2:rxjava:2.0.1’<br>compile ‘io.reactivex.rxjava2:rxandroid:2.0.1’</p>
+</blockquote>
+<h2 id="1-Observer的subscribe-具备多个重载的方法"><a href="#1-Observer的subscribe-具备多个重载的方法" class="headerlink" title="1.Observer的subscribe()具备多个重载的方法"></a>1.Observer的subscribe()具备多个重载的方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">public final Disposable subscribe() &#123;&#125;</span><br><span class="line">    // 表示观察者不对被观察者发送的事件作出任何响应（但被观察者还是可以继续发送事件）</span><br><span class="line"></span><br><span class="line">    public final Disposable subscribe(Consumer&lt;? super T&gt; onNext) &#123;&#125;</span><br><span class="line">    // 表示观察者只对被观察者发送的Next事件作出响应</span><br><span class="line">    public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError) &#123;&#125; </span><br><span class="line">    // 表示观察者只对被观察者发送的Next事件 &amp; Error事件作出响应</span><br><span class="line"></span><br><span class="line">    public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError, Action onComplete) &#123;&#125;</span><br><span class="line">    // 表示观察者只对被观察者发送的Next事件、Error事件 &amp; Complete事件作出响应</span><br><span class="line"></span><br><span class="line">    public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError, Action onComplete, Consumer&lt;? super Disposable&gt; onSubscribe) &#123;&#125;</span><br><span class="line">    // 表示观察者只对被观察者发送的Next事件、Error事件 、Complete事件 &amp; onSubscribe事件作出响应</span><br><span class="line"></span><br><span class="line">    public final void subscribe(Observer&lt;? super T&gt; observer) &#123;&#125;</span><br><span class="line">    // 表示观察者对被观察者发送的任何事件都作出响应</span><br></pre></td></tr></table></figure>
+<h2 id="2-可采用-Disposable-dispose-切断观察者-与-被观察者-之间的连接"><a href="#2-可采用-Disposable-dispose-切断观察者-与-被观察者-之间的连接" class="headerlink" title="2.可采用 Disposable.dispose() 切断观察者 与 被观察者 之间的连接"></a>2.可采用 Disposable.dispose() 切断观察者 与 被观察者 之间的连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">// 主要在观察者 Observer中 实现</span><br><span class="line">        Observer&lt;Integer&gt; observer = new Observer&lt;Integer&gt;() &#123;</span><br><span class="line">            // 1. 定义Disposable类变量</span><br><span class="line">            private Disposable mDisposable;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onSubscribe(Disposable d) &#123;</span><br><span class="line">                Log.d(TAG, &quot;开始采用subscribe连接&quot;);</span><br><span class="line">                // 2. 对Disposable类变量赋值</span><br><span class="line">                mDisposable = d;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onNext(Integer value) &#123;</span><br><span class="line">                Log.d(TAG, &quot;对Next事件&quot;+ value +&quot;作出响应&quot;  );</span><br><span class="line">                if (value == 2) &#123;</span><br><span class="line">                    // 设置在接收到第二个事件后切断观察者和被观察者的连接</span><br><span class="line">                    mDisposable.dispose();</span><br><span class="line">                    Log.d(TAG, &quot;已经切断了连接：&quot; + mDisposable.isDisposed());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable e) &#123;</span><br><span class="line">                Log.d(TAG, &quot;对Error事件作出响应&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onComplete() &#123;</span><br><span class="line">                Log.d(TAG, &quot;对Complete事件作出响应&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/14/OWN----Rxjava 2.0 订阅事件/" data-id="cjequltqb00001kwg6um59nve" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/14/自己的--Rxjava 操作符/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Rxjava 操作符
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/14/own----rxjava 2.0 源码分析/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Rxjava* 2.0 源码分析</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/14/自己的--Rxjava 操作符/">Rxjava 操作符</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/14/OWN----Rxjava 2.0 订阅事件/">Rxjava 2.0 订阅事件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/14/own----rxjava 2.0 源码分析/">Rxjava* 2.0 源码分析</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/12/declare-styleable：自定义控件的属性/">declare-styleable：自定义控件的属性 20180312</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/12/注解代替枚举案例/">注解代替枚举案例 20180312</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 YongliangHou<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
